@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v1
       with:
-        registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_95724fae0d1a403f937aed9e7371ccc4 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_79f2041426a24deaa13897248cfe70a4 }}
+        registry: https://github.com/jimpson1/cancodefinalproject/blob/master/templates/testweb.html/
+        username: ${{ secrets.AzureAppService_ContainerUsername_73e59a2476da4022abea1ccc4b29e38e }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_5b7e40cbfbc14cebb0e1edc53346913c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_95724fae0d1a403f937aed9e7371ccc4 }}/appsvc/staticsite:${{ github.sha }}
+        tags: github.com/jimpson1/cancodefinalproject/blob/master/templates/testweb.html/${{ secrets.AzureAppService_ContainerUsername_73e59a2476da4022abea1ccc4b29e38e }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'jpellwebapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_54db362b57b149f480344312dba5091d }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_95724fae0d1a403f937aed9e7371ccc4 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_acdd891c5b2a4b7cb3358db42bb33039 }}
+        images: 'github.com/jimpson1/cancodefinalproject/blob/master/templates/testweb.html/${{ secrets.AzureAppService_ContainerUsername_73e59a2476da4022abea1ccc4b29e38e }}/appsvc/staticsite:${{ github.sha }}'
